@@ -1,15 +1,14 @@
-# ToDo Application
+# Flask REST API Template
 
-The ToDo application is a simple web application for managing tasks. With it, you can create, view, update, and delete tasks to organize your work more efficiently.
 
 ## Installation
 
-To run the ToDo application, you'll need Docker and Docker Compose.
+To run this application, you'll need Docker and Docker Compose.
 
 1. First, clone the repository:
 
 ```
-git clone https://github.com/ruslan2020202/Todo-Rest-Full-Api
+git clone https://github.com/ruslan2020202/flask-rest-api-template
 ```
 
 2. Create a .env file based on the .env.example and configure it by specifying the necessary environment variables.
