@@ -6,6 +6,11 @@ from werkzeug.security import generate_password_hash
 db = SQLAlchemy()
 
 
+def execute_data(query: str):
+    result = db.session.execute(text(query))
+    return result.fetchall()
+
+
 class Base:
     def save(self) -> None:
         db.session.add(self)
@@ -34,6 +39,3 @@ class UsersModel(db.Model, Base):
     @classmethod
     def find_by_email(cls, email: str) -> 'UsersModel':
         return cls.query.filter_by(email=email).first()
-
-
-
