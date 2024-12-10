@@ -4,17 +4,19 @@ import uuid
 
 load_dotenv()
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 class Config:
     SECRET_KEY = uuid.uuid4().hex
-    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://root:{os.environ.get('DATABASE_PASSWORD')}@{os.environ.get('DATABASE_HOST_TEST')}:3306/{os.environ.get('DATABASE_NAME_TEST')}"
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASK_APP = os.environ.get('FLASK_APP')
     PROPAGATE_EXCEPTIONS = True
 
 
 class DevelopmentConfig(Config):
-    DEBUG = True
+    DEBUG = False
 
 
 class TestingConfig(Config):
@@ -22,4 +24,4 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://root:{os.environ.get('DATABASE_PASSWORD')}@{os.environ.get('DATABASE_HOST')}:3306/{os.environ.get('DATABASE_NAME')}"
+    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{os.environ.get('DATABASE_USER')}:{os.environ.get('DATABASE_PASSWORD')}@{os.environ.get('DATABASE_HOST')}/{os.environ.get('DATABASE_NAME')}"
