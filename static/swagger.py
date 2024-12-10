@@ -6,6 +6,6 @@ SWAGGER_BLUEPRINT = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
     config={
-        'app_name': 'ToDo API'
+        'app_name': 'Template REST API'
     }
 )
